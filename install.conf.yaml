@@ -1,0 +1,13 @@
+- clean: ['~']
+
+- link:
+    ~/.gitconfig: gitconfig
+    ~/.vimrc: vimrc
+
+
+- clean: ['~']
+
+- link:
+    ~/.gitconfig: gitconfig
+
+
