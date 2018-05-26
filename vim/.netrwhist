@@ -1,4 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/Aymen/.vim'
-let g:netrw_dirhist_2='/cygdrive/c/Users/Aymen/Documents/Year 1/Semester 2/comp1206/cw/digital-doilies'
