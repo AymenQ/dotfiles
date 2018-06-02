@@ -24,3 +24,4 @@ map <left> <nop>
 map <right> <nop>
 nmap <F9> :SCCompile<cr>
 nmap <F10> :SCCompileRun<cr>
+map <F7> mzgg=G`z
