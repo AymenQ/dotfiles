@@ -2,6 +2,7 @@ call plug#begin()
 Plug 'lervag/vimtex'
 Plug 'ajh17/VimCompletesMe'
 Plug 'xuhdev/SingleCompile'
+Plug 'mikelue/vim-maven-plugin'
 call plug#end()
 
 let g:vimtex_view_method = 'sumatrapdf'
