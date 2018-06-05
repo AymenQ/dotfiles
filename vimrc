@@ -8,7 +8,7 @@ endif
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
 let g:vim_bootstrap_langs = "c,html,javascript,php,python"
-let g:vim_bootstrap_editor = "vim"			
+let g:vim_bootstrap_editor = "vim"
 
 if !filereadable(vimplug_exists)
   if !executable("curl")
@@ -66,9 +66,12 @@ Plug 'tomasr/molokai'
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
 Plug 'lervag/vimtex'
-Plug 'ajh17/VimCompletesMe'
 Plug 'xuhdev/SingleCompile'
+Plug 'maralla/completor.vim'
 Plug 'mikelue/vim-maven-plugin'
+Plug 'kien/ctrlp.vim'
+Plug 'mbbill/undotree'
+
 call plug#end()
 
 filetype plugin indent on
@@ -123,8 +126,13 @@ let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
 
-let g:vimtex_view_method = 'sumatrapdf'
-let g:vimtex_view_enabled = 'false'
+let g:polyglot_disabled = ['latex']
+
+let g:vimtex_view_method = 'general'
+let g:vimtex_view_general_viewer = 'SumatraPDF'
+let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+let g:vimtex_view_general_options_latexmk = "-reuse-instance"
+
 let g:vimtex_compiler_latexmk = {'backend': 'jobs', 'callback' : 0}
 augroup VimCompletesMeTex
     autocmd!
@@ -168,7 +176,7 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
-  
+
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
@@ -176,7 +184,7 @@ else
       set term=xterm-256color
     endif
   endif
-  
+
 endif
 
 
@@ -273,6 +281,18 @@ if !exists('*s:setupWrapping')
   endfunction
 endif
 
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+if has("persistent_undo")
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
+
 "*****************************************************************************
 "" Autocmd Rules
 "*****************************************************************************
@@ -306,6 +326,7 @@ set autoread
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
+
 
 "" Split
 noremap <Leader>h :<C-u>split<CR>
