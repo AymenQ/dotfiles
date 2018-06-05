@@ -39,6 +39,8 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
+Plug 'kana/vim-arpeggio'
+
 "if isdirectory('/usr/local/opt/fzf')
   " Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 " " else
@@ -453,6 +455,7 @@ vnoremap K :m '<-2<CR>gv=gv
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
 
+call arpeggio#map('i', '', 0, 'jk', '<Esc>')
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
