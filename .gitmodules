@@ -1,3 +1,5 @@
-[submodule "dotbot"]
-	path = dotbot
-	url = https://github.com/anishathalye/dotbot
+[submodule "meta/dotbot"]
+    path = meta/dotbot
+    url = https://github.com/anishathalye/dotbot.git
+    branch = master
+    ignore = dirty
