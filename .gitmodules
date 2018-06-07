@@ -1,3 +1,6 @@
 [submodule "meta/dotbot"]
 	path = meta/dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "meta/dotbot_plugins/dotbot_plugin_aptget"]
+	path = meta/dotbot_plugins/dotbot_plugin_aptget
+	url = https://github.com/dein0s/dotbot_plugin_aptget
