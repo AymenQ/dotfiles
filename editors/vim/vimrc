@@ -96,7 +96,7 @@ set softtabstop=0
 set shiftwidth=4
 set expandtab
 
-"" Map leader to ,
+"" Map leader to space
 map <Space> <Leader>
 
 "" Enable hidden buffers
@@ -321,8 +321,15 @@ set autoread
 "" Mappings
 "*****************************************************************************
 
-nnoremap <Leader>f :Files<cr>
-nnoremap <Leader>l :Lines<cr>
+nnoremap <Leader>f :<<C-u>Denite file_rec<cr>
+nnoremap <Leader>l :<C-u>Denite line<cr>
+
+augroup deniteresize
+    autocmd!
+    autocmd VimResized,VimEnter * call denite#custom#option('default',
+          \'winheight', winheight(0) / 2)
+augroup end
+
 
 "" Split
 noremap <Leader>h :<C-u>split<CR>
