@@ -1,5 +1,5 @@
 htop
-python-pip3
+python3-pip
 gnupg2
 curl
 wget

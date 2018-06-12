@@ -1,5 +1,8 @@
 [user]
 	email = qader.aymen@gmail.com
 	name = Aymen Qader
+	signingkey = BC9974919D153006
 [credential "https://github.com"]
 	username = Moony22
+[commit]
+	gpgsign = true
