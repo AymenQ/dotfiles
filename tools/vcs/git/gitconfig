@@ -5,4 +5,4 @@
 [credential "https://github.com"]
 	username = Moony22
 [commit]
-	gpgsign = true
+	; gpgsign = true
