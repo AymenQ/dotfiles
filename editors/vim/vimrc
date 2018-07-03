@@ -34,11 +34,10 @@ Plug 'vim-scripts/CSApprox'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 Plug 'kana/vim-arpeggio'
-Plug 'Shougo/denite.nvim'
+" Plug 'Shougo/denite.nvim'
 " if isdirectory('/usr/local/opt/fzf')
 "     Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 " else
@@ -311,11 +310,11 @@ set autoread
 nnoremap <Leader>f :<<C-u>Denite file_rec<cr>
 nnoremap <Leader>l :<C-u>Denite line<cr>
 
-augroup deniteresize
-    autocmd!
-    autocmd VimResized,VimEnter * call denite#custom#option('default',
-          \'winheight', winheight(0) / 2)
-augroup end
+" augroup deniteresize
+"     autocmd!
+"     autocmd VimResized,VimEnter * call denite#custom#option('default',
+"           \'winheight', winheight(0) / 2)
+" augroup end
 
 
 "" Split
