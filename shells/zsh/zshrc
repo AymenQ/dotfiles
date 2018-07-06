@@ -64,6 +64,7 @@ plugins=(
   zsh-autosuggestions
   z
   extract
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
