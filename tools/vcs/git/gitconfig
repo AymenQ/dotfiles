@@ -8,3 +8,5 @@
 	username = AymenQ
 [commit]
 	; gpgsign = true
+[gitreview]
+	remote = origin
