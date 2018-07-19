@@ -103,3 +103,5 @@ prompt_context() {
     fi
 }
 export PATH=$PATH:/opt/arm/forge/bin
+
+bindkey '^[[Z' reverse-menu-complete
