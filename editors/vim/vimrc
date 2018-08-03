@@ -38,6 +38,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 Plug 'kana/vim-arpeggio'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'rhysd/vim-clang-format'
 " Plug 'Shougo/denite.nvim'
 " if isdirectory('/usr/local/opt/fzf')
 "     Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -93,7 +94,7 @@ set backspace=indent,eol,start
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
-set expandtab
+set noexpandtab
 
 "" Map leader to space
 map <Space> <Leader>
