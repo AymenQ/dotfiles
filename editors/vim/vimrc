@@ -471,3 +471,5 @@ if executable('ag')
   endif
 
 let g:clang_format#command="p-clang-format"
+set list
+set listchars=tab:>-
