@@ -39,6 +39,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'kana/vim-arpeggio'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'tpope/vim-unimpaired'
+Plug 'morhetz/gruvbox'
 " Plug 'Shougo/denite.nvim'
 " if isdirectory('/usr/local/opt/fzf')
 "     Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -154,7 +156,8 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme molokai
+  colorscheme gruvbox
+  set background=dark
 endif
 
 set mousemodel=popup
@@ -220,7 +223,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'gruvbox'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
