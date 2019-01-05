@@ -102,6 +102,52 @@ prompt_context() {
       # prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
     fi
 }
-export PATH=$PATH:/opt/arm/forge/bin
-
 bindkey '^[[Z' reverse-menu-complete
+alias mutt=neomutt
+alias ts=/opt/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
+
+function kpatch () {
+  patchname=$1
+  patch="$(readlink -f $patchname)"
+  shift
+  git send-email \
+    --cc-cmd="cd ~/kernel/linux && ./scripts/get_maintainer.pl --norolestats --no-git-fallback $patch" \
+    $@ $patch
+}
+
+function kpatchset () {
+  dir=$1
+  patches=()
+  for file in $dir/*; do
+	  patches+=("$(readlink -f $file)")
+  done;
+  # patches=("$(readlink -f $dir/*)")
+  patch=${patches[2]}
+  # echo $patch
+  git send-email \
+	${patches[*]} \
+    --cc-cmd="cd ~/kernel/linux && ./scripts/get_maintainer.pl --norolestats --no-git-fallback $patch" \
+	${@:2}
+}
+
+alias "kchecker=~/src/smatch/smatch_scripts/kchecker"
+alias "smdb=~/src/smatch/smatch_data/db/smdb.py"
+export PATH="$PATH:$HOME/.local/bin:$HOME/codechecker/build/CodeChecker/bin"
+
+# User specific aliases and functions
+# added by Anaconda3 5.3.1 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/aymen/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     \eval "$__conda_setup"
+# else
+#     if [ -f "/home/aymen/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/aymen/anaconda3/etc/profile.d/conda.sh"
+#         CONDA_CHANGEPS1=false conda activate base
+#     else
+#         \export PATH="/home/aymen/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda init <<<
