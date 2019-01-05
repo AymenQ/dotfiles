@@ -63,6 +63,7 @@ if v:version >= 704
   "" Snippets
   Plug 'SirVer/ultisnips'
 endif
+let g:tex_flavor = "latex"
 
 Plug 'honza/vim-snippets'
 
@@ -84,6 +85,19 @@ call plug#end()
 
 filetype plugin indent on
 
+let g:haskell_classic_highlighting = 1
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 2
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_before_where = 2
+let g:haskell_indent_after_bare_where = 2
+let g:haskell_indent_do = 3
+let g:haskell_indent_in = 1
+let g:haskell_indent_guard = 2
+let g:haskell_indent_case_alternative = 1
+let g:cabal_indent_section = 2
+
 "*****************************************************************************
 "" Basic Setup
 "*****************************************************************************"
@@ -103,6 +117,11 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set noexpandtab
+
+" Settings for haskell
+autocmd Filetype haskell set shiftwidth=4
+autocmd Filetype haskell set expandtab "Use spaces instead of tab characters
+autocmd Filetype haskell set tw=80 " line wrapping
 
 "" Map leader to space
 map <Space> <Leader>
@@ -137,16 +156,14 @@ let g:session_command_aliases = 1
 let g:polyglot_disabled = ['latex']
 
 let g:vimtex_view_method = 'general'
-let g:vimtex_view_general_viewer = 'SumatraPDF'
+let g:vimtex_view_general_viewer = 'evince'
 let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
 let g:vimtex_view_general_options_latexmk = "-reuse-instance"
 
 let g:vimtex_compiler_latexmk = {'backend': 'jobs', 'callback' : 0}
-augroup VimCompletesMeTex
-    autocmd!
-    autocmd FileType tex
-        \ let b:vcm_omni_pattern = g:vimtex#re#neocomplete
-augroup END
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 augroup vimtex_config
     au!
@@ -362,6 +379,13 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 "" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
+nnoremap <C-c>g :YcmCompleter GoTo<CR>
+nnoremap <C-c>gd :YcmCompleter GoToDeclaration<CR>
+nnoremap <C-c>t :YcmCompleter GetType<CR>
+nnoremap <C-c>d :YcmCompleter GetDoc<CR>
+nnoremap <C-c>fi :YcmCompleter FixIt<CR>
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+
 "" fzf.vim
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
@@ -405,6 +429,8 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
+
+
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -479,7 +505,7 @@ if executable('ag')
       let g:ctrlp_user_command = ['ag','%s','-l','--nocolor','-g','']
   endif
 
-let g:clang_format#command="p-clang-format"
+" let g:clang_format#command="p-clang-format"
 set list
 set listchars=tab:>-
 
