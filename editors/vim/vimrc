@@ -41,6 +41,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'tpope/vim-unimpaired'
 Plug 'morhetz/gruvbox'
+Plug 'vivien/vim-linux-coding-style'
+Plug 'eagletmt/neco-ghc'
+Plug 'alx741/vim-hindent'
 " Plug 'Shougo/denite.nvim'
 " if isdirectory('/usr/local/opt/fzf')
 "     Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -70,9 +73,12 @@ Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
 Plug 'lervag/vimtex'
 Plug 'xuhdev/SingleCompile'
-Plug 'lifepillar/vim-mucomplete'
+" Plug 'lifepillar/vim-mucomplete'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'mikelue/vim-maven-plugin'
 Plug 'mbbill/undotree'
+Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 
