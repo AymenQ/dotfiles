@@ -1,4 +1,4 @@
 - shell:
-        - [if [ ! -d "$HOME/.oh-my-zsh" ]; then /bin/sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"; fi;, Installing oh-my-sh if required]
+        - if [ ! -d "$HOME/.oh-my-zsh" ]; then /bin/sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"; fi;
 - link:
         ~/.zshrc: shells/zsh/zshrc
