@@ -1,7 +1,8 @@
 [user]
 	email = aymen.qader@arm.com
 	name = Aymen Qader
-	signingkey = BC9974919D153006
+[core]
+	editor = vim
 [gitreview]
 	remote = origin
 [credential "https://github.com"]

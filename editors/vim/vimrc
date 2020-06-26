@@ -32,7 +32,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/CSApprox'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
@@ -41,23 +41,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'tpope/vim-unimpaired'
 Plug 'morhetz/gruvbox'
-Plug 'vivien/vim-linux-coding-style'
-Plug 'eagletmt/neco-ghc'
-Plug 'alx741/vim-hindent'
-" Plug 'Shougo/denite.nvim'
-" if isdirectory('/usr/local/opt/fzf')
-"     Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-" else
-"     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-"     Plug 'junegunn/fzf.vim'
-" endif
 let g:make = 'gmake'
 if exists('make')
         let g:make = 'make'
-endif
-Plug 'Shougo/vimproc.vim', {'do': g:make}
-if v:version >= 703
-  Plug 'Shougo/vimshell.vim'
 endif
 if v:version >= 704
   "" Snippets
@@ -72,31 +58,12 @@ Plug 'tomasr/molokai'
 " c
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
-Plug 'lervag/vimtex'
-Plug 'xuhdev/SingleCompile'
-" Plug 'lifepillar/vim-mucomplete'
-Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'mikelue/vim-maven-plugin'
 Plug 'mbbill/undotree'
-Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 
 filetype plugin indent on
-
-let g:haskell_classic_highlighting = 1
-let g:haskell_indent_if = 3
-let g:haskell_indent_case = 2
-let g:haskell_indent_let = 4
-let g:haskell_indent_where = 6
-let g:haskell_indent_before_where = 2
-let g:haskell_indent_after_bare_where = 2
-let g:haskell_indent_do = 3
-let g:haskell_indent_in = 1
-let g:haskell_indent_guard = 2
-let g:haskell_indent_case_alternative = 1
-let g:cabal_indent_section = 2
 
 "*****************************************************************************
 "" Basic Setup
@@ -117,11 +84,6 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set noexpandtab
-
-" Settings for haskell
-autocmd Filetype haskell set shiftwidth=4
-autocmd Filetype haskell set expandtab "Use spaces instead of tab characters
-autocmd Filetype haskell set tw=80 " line wrapping
 
 "" Map leader to space
 map <Space> <Leader>
@@ -154,21 +116,6 @@ let g:session_autosave = "no"
 let g:session_command_aliases = 1
 
 let g:polyglot_disabled = ['latex']
-
-let g:vimtex_view_method = 'general'
-let g:vimtex_view_general_viewer = 'evince'
-let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
-let g:vimtex_view_general_options_latexmk = "-reuse-instance"
-
-let g:vimtex_compiler_latexmk = {'backend': 'jobs', 'callback' : 0}
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
-
-augroup vimtex_config
-    au!
-    au User VimtexEventQuit call vimtex#compiler#clean(0)
-augroup END
 
 "*****************************************************************************
 "" Visual Settings
@@ -213,11 +160,9 @@ else
 
 endif
 
-
 if &term =~ '256color'
   set t_ut=
 endif
-
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -255,7 +200,6 @@ let g:airline_skip_empty_sections = 1
 "*****************************************************************************
 "" Abbreviations
 "*****************************************************************************
-"" no one is really happy until you have this shortcuts
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
@@ -266,10 +210,6 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
-
-" vimshell.vim
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
 
 " terminal emulation
 if g:vim_bootstrap_editor == 'nvim'
@@ -379,13 +319,6 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 "" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-nnoremap <C-c>g :YcmCompleter GoTo<CR>
-nnoremap <C-c>gd :YcmCompleter GoToDeclaration<CR>
-nnoremap <C-c>t :YcmCompleter GetType<CR>
-nnoremap <C-c>d :YcmCompleter GetDoc<CR>
-nnoremap <C-c>fi :YcmCompleter FixIt<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-
 "" fzf.vim
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
@@ -429,8 +362,6 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
-
-
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -516,3 +447,5 @@ augroup numbertoggle
 	autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
 	autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 augroup END
+
+set shell=zsh\ -l
